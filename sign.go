@@ -2,6 +2,11 @@
 //
 // See
 // http://docs.amazonwebservices.com/AmazonS3/2006-03-01/dev/RESTAuthentication.html.
+//
+// It also registers an HTTP protocol handler for "s3".
+//   s3.DefaultTransport.Keys = &s3.Keys{ ... }
+//   ...
+//   resp, err := http.Get("s3://mybucket.s3.amazonaws.com/file.txt")
 package s3
 
 import (

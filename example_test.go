@@ -3,12 +3,22 @@ package s3_test
 import (
 	"fmt"
 	"github.com/kr/s3"
+	"io"
 	"log"
 	"net/http"
 	"os"
 	"strings"
 	"time"
 )
+
+func Example() {
+	res, err := http.Get("s3://mybucket.s3.amazonaws.com/file.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	io.Copy(os.Stdout, res.Body)
+	res.Body.Close()
+}
 
 func ExampleSign() {
 	keys := s3.Keys{
